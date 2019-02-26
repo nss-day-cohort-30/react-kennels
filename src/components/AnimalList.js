@@ -11,7 +11,7 @@ class AnimalList extends Component {
                 <h1>Animals</h1>
                 {
                     this.props.animals.map(animal =>
-                        <Animal key={animal.id}
+                        <Animal key={`animal-${animal.id}`}
                             animal={animal}
                             owners={
                                 this.props.animalOwners
