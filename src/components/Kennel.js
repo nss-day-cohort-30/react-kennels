@@ -54,15 +54,24 @@ export default class Kennel extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <h1>Student Kennels</h1>
+                {/*
+                    function AnimalList (animals, owners, animalOwners) {
+                        return ` <html ${stuff}> `
+                    }
+
+                    AnimalList(this.state.animals,
+                        this.state.owners,
+                        this.state.animalOwners)
+                */}
                 <AnimalList animals={this.state.animals}
                     owners={this.state.owners}
                     animalOwners={this.state.animalOwners}
                      />
                 <LocationList locations={this.state.locations} />
                 <EmployeeList employees={this.state.employees} />
-            </div>
+            </React.Fragment>
         );
     }
 }

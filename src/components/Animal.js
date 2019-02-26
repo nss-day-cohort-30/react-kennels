@@ -9,9 +9,7 @@ class Animal extends Component {
                     { this.props.animal.name }
                 </div>
                 <div>
-                {
-                    this.props.owners.join(", ")
-                }
+                    { this.props.owners.join(", ") }
                 </div>
             </section>
         )
