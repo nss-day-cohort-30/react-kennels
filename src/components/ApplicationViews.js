@@ -14,6 +14,12 @@ class ApplicationViews extends Component {
         locations: []
     }
 
+    getAllAnimalsAgain =  () => {
+        fetch("http://localhost:5002/animals")
+            .then(r => r.json())
+            .then(animals => this.setState({ animals: animals }))
+    }
+
     componentDidUpdate () {
         console.log("componentDidUpdate -- ApplicationViews")
     }
@@ -52,6 +58,7 @@ class ApplicationViews extends Component {
                     return <AnimalList animals={this.state.animals}
                                 owners={this.state.owners}
                                 animalOwners={this.state.animalOwners}
+                                loadAnimals={this.getAllAnimalsAgain}
                                 />
                 }} />
                 <Route path="/employees" render={(props) => {

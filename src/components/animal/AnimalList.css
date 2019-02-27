@@ -3,3 +3,7 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
+.toastContainer {
+    max-width: 300px;
+}
