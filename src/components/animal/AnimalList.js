@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import "./AnimalList.css"
-import AnimalOwners from './AnimalOwners';
 import Animal from './Animal';
 
 
 class AnimalList extends Component {
     render() {
         return (
-            <section className="animals">
-                <h1>Animals</h1>
+            <article className="animals">
                 {
                     this.props.animals.map(animal =>
                         <Animal key={`animal-${animal.id}`}
@@ -24,7 +22,7 @@ class AnimalList extends Component {
                             } />
                     )
                 }
-            </section>
+            </article>
         )
     }
 }
