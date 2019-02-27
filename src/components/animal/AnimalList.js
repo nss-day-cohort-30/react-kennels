@@ -4,7 +4,17 @@ import Animal from './Animal';
 
 
 class AnimalList extends Component {
+    componentDidMount() {
+        console.log("componentDidMount -- AnimalList")
+    }
+
+    componentDidUpdate () {
+        console.log("componentDidUpdate -- AnimalList")
+    }
+
+
     render() {
+        console.log("render -- AnimalList")
         return (
             <article className="animals">
                 {
