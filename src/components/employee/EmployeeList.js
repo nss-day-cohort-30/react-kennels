@@ -7,13 +7,16 @@ class EmployeeList extends Component {
     }
     render() {
         console.log("render -- EmployeeList")
-        console.log("this.props", this.props)
         return (
             <section className="employees">
             {
                 this.props.employees.map(employee =>
                     <div key={employee.id}>
                         {employee.name}
+                        <button onClick={() => {
+                                this.props.fireEmployee(employee.id)
+                            }}
+                        >Fire</button>
                     </div>
                 )
             }
