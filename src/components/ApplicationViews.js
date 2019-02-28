@@ -14,6 +14,24 @@ class ApplicationViews extends Component {
         locations: []
     }
 
+    dischargeAnimal = (id) => {
+        fetch(`http://localhost:5002/animals/${id}`, {
+            "method": "DELETE"
+        })
+        .then(() => fetch("http://localhost:5002/animals"))
+        .then(r => r.json())
+        .then(animals => this.setState({ animals: animals }))
+    }
+
+    fireEmployee = (id) => {
+        fetch(`http://localhost:5002/employees/${id}`, {
+            "method": "DELETE"
+        })
+        .then(() => fetch("http://localhost:5002/employees"))
+        .then(r => r.json())
+        .then(employees => this.setState({ employees: employees }))
+    }
+
     getAllAnimalsAgain =  () => {
         fetch("http://localhost:5002/animals")
             .then(r => r.json())
@@ -44,10 +62,10 @@ class ApplicationViews extends Component {
             .then(r => r.json()))
             .then(animalOwners => newState.animalOwners = animalOwners)
             .then(() => this.setState(newState))
-            .then(() => this.setState(newState))
     }
 
     render() {
+        console.clear()
         console.log("render -- ApplicationViews")
         return (
             <React.Fragment>
@@ -58,11 +76,15 @@ class ApplicationViews extends Component {
                     return <AnimalList animals={this.state.animals}
                                 owners={this.state.owners}
                                 animalOwners={this.state.animalOwners}
+                                dischargeAnimal={this.dischargeAnimal}
                                 loadAnimals={this.getAllAnimalsAgain}
                                 />
                 }} />
                 <Route path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees} />
+                    return <EmployeeList
+                        fireEmployee={this.fireEmployee}
+                        employees={this.state.employees}
+                        />
                 }} />
             </React.Fragment>
         )
