@@ -12,7 +12,7 @@ class AnimalList extends Component {
     componentDidUpdate (prevProps, prevState) {
         console.log("componentDidUpdate -- AnimalList")
         if (JSON.stringify(this.props.animals.length) === JSON.stringify(prevProps.animals.length)) {
-            toast.info("Animals Reloded", {
+            toast.info("Animals Reloaded", {
                 position: toast.POSITION.TOP_LEFT,
                 autoClose: 1000
             });
