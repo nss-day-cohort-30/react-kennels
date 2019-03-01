@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 
 
 class EmployeeList extends Component {
@@ -12,11 +13,13 @@ class EmployeeList extends Component {
             {
                 this.props.employees.map(employee =>
                     <div key={employee.id}>
-                        {employee.name}
-                        <button onClick={() => {
-                                this.props.fireEmployee(employee.id)
-                            }}
-                        >Fire</button>
+                        <Link className="nav-link" to={`/employees/${employee.id}`}>
+                            {employee.name}
+                            <button onClick={() => {
+                                    this.props.fireEmployee(employee.id)
+                                }}
+                            >Fire</button>
+                        </Link>
                     </div>
                 )
             }

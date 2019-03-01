@@ -7,6 +7,8 @@ import AnimalManager from '../modules/AnimalManager'
 import OwnerManager from '../modules/OwnerManager'
 import LocationManager from '../modules/LocationManager'
 import EmployeeManager from '../modules/EmployeeManager'
+import AnimalDetail from './animal/AnimalDetail';
+import EmployeeDetail from './employee/EmployeeDetail';
 
 
 class ApplicationViews extends Component {
@@ -19,7 +21,7 @@ class ApplicationViews extends Component {
     }
 
     dischargeAnimal = (id) => {
-        fetch(`http://localhost:5002/animals/${id}`, {
+        return fetch(`http://localhost:5002/animals/${id}`, {
             "method": "DELETE"
         })
         .then(() => fetch("http://localhost:5002/animals"))
@@ -28,7 +30,7 @@ class ApplicationViews extends Component {
     }
 
     fireEmployee = (id) => {
-        fetch(`http://localhost:5002/employees/${id}`, {
+        return fetch(`http://localhost:5002/employees/${id}`, {
             "method": "DELETE"
         })
         .then(() => fetch("http://localhost:5002/employees"))
@@ -73,7 +75,7 @@ class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route path="/animals" render={(props) => {
+                <Route exact path="/animals" render={(props) => {
                     return <AnimalList animals={this.state.animals}
                                 owners={this.state.owners}
                                 animalOwners={this.state.animalOwners}
@@ -81,11 +83,24 @@ class ApplicationViews extends Component {
                                 loadAnimals={this.getAllAnimalsAgain}
                                 />
                 }} />
-                <Route path="/employees" render={(props) => {
+                <Route exact path="/animals/:animalId(\d+)" render={(props) => {
+                    console.log(props)
+                    return <AnimalDetail
+                        {...props}
+                        dischargeAnimal={this.dischargeAnimal}
+                        animals={this.state.animals} />
+                }} />
+                <Route exact path="/employees" render={(props) => {
                     return <EmployeeList
+                    fireEmployee={this.fireEmployee}
+                    employees={this.state.employees}
+                    />
+                }} />
+                <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
+                    return <EmployeeDetail
+                        {...props}
                         fireEmployee={this.fireEmployee}
-                        employees={this.state.employees}
-                        />
+                        employees={this.state.employees} />
                 }} />
             </React.Fragment>
         )
