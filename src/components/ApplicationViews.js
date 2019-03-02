@@ -1,14 +1,17 @@
 import { Route } from 'react-router-dom'
 import React, { Component } from "react"
+
 import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
+
+import AnimalDetail from './animal/AnimalDetail';
+import EmployeeDetail from './employee/EmployeeDetail';
+
 import AnimalManager from '../modules/AnimalManager'
 import OwnerManager from '../modules/OwnerManager'
 import LocationManager from '../modules/LocationManager'
 import EmployeeManager from '../modules/EmployeeManager'
-import AnimalDetail from './animal/AnimalDetail';
-import EmployeeDetail from './employee/EmployeeDetail';
 
 
 class ApplicationViews extends Component {
@@ -20,29 +23,19 @@ class ApplicationViews extends Component {
         locations: []
     }
 
-    dischargeAnimal = (id) => {
-        return fetch(`http://localhost:5002/animals/${id}`, {
-            "method": "DELETE"
-        })
-        .then(() => fetch("http://localhost:5002/animals"))
-        .then(r => r.json())
-        .then(animals => this.setState({ animals: animals }))
-    }
-
-    fireEmployee = (id) => {
-        return fetch(`http://localhost:5002/employees/${id}`, {
-            "method": "DELETE"
-        })
-        .then(() => fetch("http://localhost:5002/employees"))
-        .then(r => r.json())
-        .then(employees => this.setState({ employees: employees }))
-    }
-
-    getAllAnimalsAgain =  () => {
-        fetch("http://localhost:5002/animals")
-            .then(r => r.json())
+    dischargeAnimal = (id) =>
+        AnimalManager.delete(id)
+            .then(AnimalManager.getAll)
             .then(animals => this.setState({ animals: animals }))
-    }
+
+    fireEmployee = (id) =>
+        EmployeeManager.delete(id)
+            .then(EmployeeManager.getAll)
+            .then(employees => this.setState({ employees: employees }))
+
+    getAllAnimalsAgain = () =>
+        AnimalManager.getAll().then(animals => this.setState({ animals: animals }))
+
 
     componentDidUpdate () {
         console.log("componentDidUpdate -- ApplicationViews")
@@ -51,7 +44,6 @@ class ApplicationViews extends Component {
     componentDidMount() {
         console.log("componentDidMount -- ApplicationViews")
         const newState = {}
-
 
         AnimalManager.getAll()
             .then(animals => newState.animals = animals)

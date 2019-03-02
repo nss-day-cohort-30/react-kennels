@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import "./AnimalList.css"
-import Animal from './Animal';
+import AnimalCard from './AnimalCard';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 class AnimalList extends Component {
+
     componentDidMount() {
         console.log("componentDidMount -- AnimalList")
     }
@@ -17,7 +18,6 @@ class AnimalList extends Component {
             })
             return false
         }
-
         return true
     }
 
@@ -37,7 +37,7 @@ class AnimalList extends Component {
                 <ToastContainer className="toastContainer" />
                 {
                     this.props.animals.map(animal =>
-                        <Animal key={`animal-${animal.id}`}
+                        <AnimalCard key={`animal-${animal.id}`}
                             animal={animal}
                             dischargeAnimal={this.props.dischargeAnimal}
                             owners={

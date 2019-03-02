@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom"
+
+import house from "./location.png"
+import "./Location.css"
 
 export default class LocationList extends Component {
     componentDidMount() {
@@ -8,20 +12,22 @@ export default class LocationList extends Component {
     render() {
         console.log("render -- LocationList")
         return (
-            <article>
-                <section>
-                    <h2>Nashville North</h2>
-                    <div>
-                        1000 Infinity Way
+            <section className="list">
+            {
+                this.props.locations.map(business =>
+                    <div key={business.id} className="card ">
+                        <div className="card-body">
+                            <h4 className="card-title">
+                                <img src={house} className="icon--house" />
+                                <Link className="nav-link" to={`/locations/${business.id}`}>
+                                    {business.name}
+                                </Link>
+                            </h4>
+                        </div>
                     </div>
-                </section>
-                <section>
-                    <h2>Nashville South</h2>
-                    <div>
-                        555 Demonbreun Drive
-                    </div>
-                </section>
-            </article>
+                )
+            }
+            </section>
         );
     }
 }

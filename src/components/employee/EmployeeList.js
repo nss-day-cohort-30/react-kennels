@@ -6,9 +6,11 @@ import "./Employee.css"
 
 
 class EmployeeList extends Component {
+
     componentDidMount() {
         console.log("componentDidMount -- EmployeeList")
     }
+
     render() {
         console.log("render -- EmployeeList")
         return (

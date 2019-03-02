@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 import dog from "./DogIcon.png"
 import './Animal.css'
 
-class Animal extends Component {
+class AnimalCard extends Component {
+
     componentDidMount() {
         console.log(`componentDidMount -- Animal ${this.props.animal.id}`)
     }
@@ -32,4 +33,4 @@ class Animal extends Component {
     }
 }
 
-export default Animal
+export default AnimalCard
