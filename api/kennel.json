@@ -24,6 +24,12 @@
       "id": 6,
       "name": "Checkers",
       "breed": "Bulldog"
+    },
+    {
+      "name": "Sawyer",
+      "breed": "Lollie",
+      "employeeId": 3,
+      "id": 7
     }
   ],
   "employees": [

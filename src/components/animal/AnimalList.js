@@ -35,6 +35,13 @@ class AnimalList extends Component {
         return (
             <article className="animals">
                 <ToastContainer className="toastContainer" />
+                <button type="button"
+                        className="btn btn-success"
+                        onClick={() => {
+                            this.props.history.push("/animals/new")}
+                        }>
+                    Admit Animal
+                </button>
                 {
                     this.props.animals.map(animal =>
                         <AnimalCard key={`animal-${animal.id}`}
