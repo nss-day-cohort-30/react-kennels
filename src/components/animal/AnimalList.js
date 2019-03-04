@@ -33,8 +33,9 @@ class AnimalList extends Component {
     render() {
         console.log("render -- AnimalList")
         return (
-            <article className="animals">
-                <ToastContainer className="toastContainer" />
+            <React.Fragment>
+            <ToastContainer className="toastContainer" />
+            <div className="centerChildren">
                 <button type="button"
                         className="btn btn-success"
                         onClick={() => {
@@ -42,6 +43,8 @@ class AnimalList extends Component {
                         }>
                     Admit Animal
                 </button>
+            </div>
+            <article className="animals">
                 {
                     this.props.animals.map(animal =>
                         <AnimalCard key={`animal-${animal.id}`}
@@ -58,11 +61,13 @@ class AnimalList extends Component {
                             } />
                     )
                 }
-                <button onClick={
-                    () => this.props.loadAnimals()
-                }>Reload Animals</button>
             </article>
-
+            <div className="centerChildren">
+                <button onClick={ () => this.props.loadAnimals() }>
+                    Reload Animals
+                </button>
+            </div>
+            </React.Fragment>
         )
     }
 }
