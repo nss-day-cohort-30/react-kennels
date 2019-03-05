@@ -50,15 +50,9 @@ class AnimalList extends Component {
                         <AnimalCard key={`animal-${animal.id}`}
                             animal={animal}
                             dischargeAnimal={this.props.dischargeAnimal}
-                            owners={
-                                this.props.animalOwners
-                                    .filter(ao => ao.animalId === animal.id)
-                                    .map(ao =>
-                                        this.props.owners.find(
-                                            o => o.id === ao.ownerId
-                                        ).name
-                                    )
-                            } />
+                            owners={this.props.owners}
+                            animalOwners={this.props.animalOwners}
+                            />
                     )
                 }
             </article>

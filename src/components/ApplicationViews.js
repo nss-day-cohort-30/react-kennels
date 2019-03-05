@@ -101,9 +101,12 @@ class ApplicationViews extends Component {
                 }} />
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList
-                    fireEmployee={this.fireEmployee}
-                    employees={this.state.employees}
-                    />
+                                animals={this.state.animals}
+                                fireEmployee={this.fireEmployee}
+                                employees={this.state.employees}
+                                owners={this.state.owners}
+                                animalOwners={this.state.animalOwners}
+                                />
                 }} />
                 <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail
