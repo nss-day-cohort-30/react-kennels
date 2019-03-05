@@ -28,6 +28,16 @@ class AnimalCard extends Component {
                             <img src={dog} className="icon--dog" />
                             <div>{this.props.animal.name}</div>
                             <div className="ownerList">({ownerStringArray.join(", ")})</div>
+                            <button
+                                type="button"
+                                className="btn btn-success"
+                                onClick={() => {
+                                    this.props.history.push(`/animals/${this.props.animal.id}/edit`);
+                                }}
+                                >
+                                Edit
+                            </button>
+
                             {
                                 (this.props.hasOwnProperty("dischargeAnimal"))
                                     ? <button

@@ -52,6 +52,7 @@ class AnimalList extends Component {
                             dischargeAnimal={this.props.dischargeAnimal}
                             owners={this.props.owners}
                             animalOwners={this.props.animalOwners}
+                            history={this.props.history}
                             />
                     )
                 }

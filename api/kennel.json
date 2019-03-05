@@ -9,19 +9,19 @@
     {
       "id": 3,
       "name": "Angus",
-      "breed": "Dalmatian",
+      "breed": "Dalmatian 👾",
       "employeeId": 1
     },
     {
       "id": 4,
       "name": "Henley",
-      "breed": "Carolina Retriever",
+      "breed": "Carolina Retriever 🚒",
       "employeeId": 1
     },
     {
       "id": 5,
       "name": "Derkins",
-      "breed": "Pug",
+      "breed": "Shih tzu 👿",
       "employeeId": 3
     },
     {
