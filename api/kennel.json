@@ -35,6 +35,12 @@
       "breed": "Lollie",
       "employeeId": 3,
       "id": 7
+    },
+    {
+      "name": "Gypsy",
+      "breed": "Miniature Schnauzer",
+      "employeeId": 2,
+      "id": 8
     }
   ],
   "employees": [
