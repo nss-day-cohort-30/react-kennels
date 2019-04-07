@@ -1,33 +1,34 @@
 import React, { Component } from "react"
 import "./Animal.css"
-import dog from "./DogIcon.png"
+import dog from "./DogIcon.svg"
 
 
 export default class Animal extends Component {
-    render() {
-        /*
-            Using the route parameter, find the animal that the
-            user clicked on by looking at the `this.props.animals`
-            collection that was passed down from ApplicationViews
-        */
-        const animal = this.props.animals.find(a =>
-            a.id === parseInt(this.props.match.params.animalId))
-             || {id:404, name:"404", breed: "Dog not found"}
+    state = {
+        saveDisabled: false
+    }
 
+    render() {
         return (
             <section className="animal">
-                <div key={animal.id} className="card">
+                <div key={this.props.animal.id} className="card">
                     <div className="card-body">
                         <h4 className="card-title">
                             <img src={dog} className="icon--dog" />
-                            {animal.name}
+                            {this.props.animal.name}
                         </h4>
-                        <h6 className="card-title">{animal.breed}</h6>
+                        <h6 className="card-title">{this.props.animal.breed}</h6>
                         <button
-                            onClick={() =>
-                                this.props.dischargeAnimal(animal.id)
-                                    .then(() => this.props.history.push("/animals"))
+                            onClick={
+                                () => {
+                                    this.setState(
+                                        { saveDisabled: true },
+                                        () => this.props.dischargeAnimal(this.props.animal.id)
+                                    )
+
+                                }
                             }
+                            disabled={ this.state.saveDisabled }
                             className="card-link">Delete</button>
                     </div>
                 </div>

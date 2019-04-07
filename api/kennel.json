@@ -23,24 +23,6 @@
       "name": "Derkins",
       "breed": "Shih tzu 👿",
       "employeeId": 3
-    },
-    {
-      "id": 6,
-      "name": "Checkers",
-      "breed": "Bulldog",
-      "employeeId": 2
-    },
-    {
-      "name": "Sawyer",
-      "breed": "Lollie",
-      "employeeId": 3,
-      "id": 7
-    },
-    {
-      "name": "Gypsy",
-      "breed": "Miniature Schnauzer",
-      "employeeId": 2,
-      "id": 8
     }
   ],
   "employees": [

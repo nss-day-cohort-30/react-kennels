@@ -6,14 +6,14 @@ export default class AnimalForm extends Component {
   state = {
     animalName: "",
     breed: "",
-    employeeId: ""
-  };
+    employeeId: "",
+    saveEnabled: false
+  }
 
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
     const stateToChange = {};
     stateToChange[evt.target.id] = evt.target.value;
-    debugger;
     this.setState(stateToChange);
   }
 
@@ -33,10 +33,10 @@ export default class AnimalForm extends Component {
         employeeId: parseInt(this.state.employeeId)
       }
 
+      this.setState({ saveEnabled: true })
+
       // Create the animal and redirect user to animal list
-      this.props
-        .addAnimal(animal)
-        .then(() => this.props.history.push("/animals"));
+      this.props.addAnimal(animal);
     }
   }
 
@@ -49,6 +49,7 @@ export default class AnimalForm extends Component {
             <input
               type="text"
               required
+              autoFocus
               className="form-control"
               onChange={this.handleFieldChange}
               id="animalName"
@@ -85,6 +86,7 @@ export default class AnimalForm extends Component {
           <button
             type="submit"
             onClick={this.constructNewAnimal}
+            disabled={this.state.saveEnabled}
             className="btn btn-primary"
           >
             Submit
