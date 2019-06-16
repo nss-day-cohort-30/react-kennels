@@ -16,6 +16,7 @@ import EmployeeManager from '../modules/EmployeeManager'
 import AnimalForm from './animal/AnimalForm'
 import AnimalEditForm from './animal/AnimalEditForm'
 import Login from './auth/Login'
+import Settings from '../modules/Settings'
 import AuthRoute from './auth/AuthRoute'
 
 
@@ -75,7 +76,7 @@ class ApplicationViews extends Component {
             .then(locations => newState.locations = locations)
             .then(() => OwnerManager.getAll())
             .then(owners => newState.owners = owners)
-            .then(() => fetch("http://localhost:5002/animalOwners")
+            .then(() => fetch(`${Settings.remoteURL}/animalOwners`)
             .then(r => r.json()))
             .then(animalOwners => newState.animalOwners = animalOwners)
             .then(() => this.setState(newState))
